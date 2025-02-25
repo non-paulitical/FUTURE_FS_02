@@ -1,11 +1,15 @@
-import './App.css'
+import './styles/App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import { Home, Analytics } from './pages';
 
 function App() {
-
   return (
-    <div className='app'>
-      
-    </div>
+    <Router>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path='analytics' element={<Analytics />} />
+      </Routes>
+    </Router>
   )
 }
 
