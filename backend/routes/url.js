@@ -6,6 +6,6 @@ router.post('/', handleGenerateShortURL);
 
 router.get('/analytics/:shortId', handleGetAnalytics);
 
-router.get('/track', handleTracking);
+router.get('/track/:user', handleTracking);
 
 module.exports = router;

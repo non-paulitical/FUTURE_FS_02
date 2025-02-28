@@ -17,20 +17,19 @@ async function handleGenerateShortURL(req, res) {
 
 }
 
-async function handleGetAnalytics(req, res) {
-    const shortId = req.params.shortId;
-    const result = await URL.findOne({ shortId });
-    return res.json({
-        totalClicks: result.visitHistory.length
-    })
-}
-
 async function handleTracking(req, res) {
-    const user = req.body.user;
+    const user = req.params.user;
     if (!user) return res.sendStatus(404);
     const result = await URL.find({ user });
+
+    const formattedResult = result.map((currentObject) => ({
+       shortId: currentObject.shortId,
+       redirectURL: currentObject.redirectURL,
+       clicks: currentObject.visitHistory.length 
+    }))
+    
     return res.json({
-        result: result
+        result: formattedResult
     })
 }
 
