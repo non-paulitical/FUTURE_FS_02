@@ -4,7 +4,7 @@ const { connectToMongoDB } = require('./connect');
 const URL = require('./models/url');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 connectToMongoDB('mongodb://localhost:27017/pitly').then(() => {
     console.log('MongoDB connected...');
@@ -28,7 +28,11 @@ app.get('/:shortId', async (req, res) => {
             }
         }
     );
-    res.redirect(entry.redirectURL);
+    try {
+        res.redirect(entry.redirectURL);
+    } catch {
+        res.sendStatus(404);
+    }
 })
 
 app.listen(PORT, () => console.log(`Server running at port ${PORT}...`))
