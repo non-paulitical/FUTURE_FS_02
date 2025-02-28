@@ -21,7 +21,7 @@ function App() {
       <header>
         <NavBar />
       </header>
-      <main>
+      <main className='h-full bg-[url("../assets/images/stars.svg")]'>
         <Routes>
           <Route index element={<Home />} />
           <Route path='analytics' element={<Analytics />} />

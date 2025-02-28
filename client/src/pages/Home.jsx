@@ -8,7 +8,6 @@ const Home = () => {
   const [shortId, setShortId] = useState('')
   const [errorMessage, setErrorMessage] = useState('');
   const { user } = useAuth0();
-  const BASE_URL = 'http://localhost:3001';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +23,7 @@ const Home = () => {
     };
 
     try {
-      const response = await fetch(BASE_URL + '/url', {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/url`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -45,18 +44,17 @@ const Home = () => {
   }
 
   return (
-    <div className='home h-screen p-5 space-y-10 bg-[url("../assets/images/stars.svg")]'>
+  <div className='home'>
       <section className='text-sm flex justify-start'>
         <h3 className='mx-auto'>Welcome, <span className='text-green-500'>{user.email}</span></h3>
       </section>
-      <section className='font-bold text-2xl md:text-3xl lg:text-5xl text-center'>
-        <h1>Build stronger digital connections</h1>
+      <section>
+        <h1 className='heading'>Build stronger digital connections</h1>
       </section>
       <section className='h-auto flex justify-center items-center'>
-        <section className='card p-5 text-black bg-white rounded-3xl w-full md:w-2/3 lg:w-1/2'>
+        <div className='card'>
           <section className='font-bold space-y-10'>
             <h2 className='text-2xl'>Shorten a long link <span className='text-blue-500'>{shortId}</span></h2>
-
             <h4>Paste your long link here</h4>
           </section>
           <section>
@@ -68,7 +66,7 @@ const Home = () => {
           </section>
           <section className='hero font-bold'>
           </section>
-        </section>
+        </div>
       </section>
     </div >
   )
