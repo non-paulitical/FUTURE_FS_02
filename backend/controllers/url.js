@@ -35,6 +35,5 @@ async function handleTracking(req, res) {
 
 module.exports = {
     handleGenerateShortURL,
-    handleGetAnalytics,
-    handleTracking,
+    handleTracking
 };

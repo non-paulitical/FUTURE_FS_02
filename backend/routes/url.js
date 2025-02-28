@@ -4,8 +4,6 @@ const { handleGenerateShortURL, handleGetAnalytics, handleTracking } = require('
 
 router.post('/', handleGenerateShortURL);
 
-router.get('/analytics/:shortId', handleGetAnalytics);
-
 router.get('/track/:user', handleTracking);
 
 module.exports = router;
