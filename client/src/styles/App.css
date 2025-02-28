@@ -6,6 +6,7 @@
     --color-text: #ffffff;
     --color-button: #f49369;
     --color-button-hover: #d17046;
+    --color-light-border: #00000050;
 }
 
 body {
